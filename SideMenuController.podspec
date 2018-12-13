@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'SideMenuController'
-  s.swift_version = “4.2”
+  s.swift_version = '4.2'
   s.version = '0.2.4'
   s.license = 'MIT'
   s.summary = 'Fully customisable and easy to use side menu controller written in Swift.'
