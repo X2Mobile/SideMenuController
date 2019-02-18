@@ -138,7 +138,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: Internal
     
     lazy var controllersCache = [String : UIViewController]()
-    lazy var _preferences: Preferences = {
+    open lazy var _preferences: Preferences = {
         return type(of: self).preferences
     }()
     
