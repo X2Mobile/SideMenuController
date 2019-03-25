@@ -142,6 +142,13 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return type(of: self).preferences
     }()
     
+    @objc open var isInteractionEnabled = true {
+        didSet {
+            _preferences.interaction.swipingEnabled = isInteractionEnabled
+            _preferences.interaction.panningEnabled = isInteractionEnabled
+        }
+    }
+    
     fileprivate(set) open var centerViewController: UIViewController!
     fileprivate(set) open var sideViewController: UIViewController!
     var centerNavController: UINavigationController? {
