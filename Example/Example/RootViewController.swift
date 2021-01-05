@@ -68,6 +68,8 @@ class RootViewController: UIViewController {
             controller.addSideMenuButton()
         })
         
+        sideMenuViewController.modalPresentationStyle = .fullScreen
+        
         show(sideMenuViewController, sender: nil)
     }
 }
