@@ -249,6 +249,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         statusBarUnderlay.alpha = 0
 
         sidePanel = UIView(frame: sidePanelFrame)
+        sidePanel.accessibilityViewIsModal = true
         view.addSubview(sidePanel)
         sidePanel.clipsToBounds = true
 
