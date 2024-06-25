@@ -169,9 +169,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
         return self._preferences.drawing.sidePanelPosition
     }()
 
-    var screenSize: CGSize {
-        return UIScreen.main.bounds.size
-    }
+    var screenSize = ProcessInfo.processInfo.getScreenSize()
 
     // MARK:- View lifecycle -
 
@@ -206,6 +204,7 @@ open class SideMenuController: UIViewController, UIGestureRecognizerDelegate {
     override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
+        screenSize = size
         coordinator.animate(alongsideTransition: { _ in
             self.repositionViews()
         }, completion: nil)
@@ -476,5 +475,21 @@ extension UIView {
         bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
         leadingAnchor.constraint(equalTo: superview.leadingAnchor).isActive = true
         trailingAnchor.constraint(equalTo: superview.trailingAnchor).isActive = true
+    }
+}
+
+extension ProcessInfo {
+    func getScreenSize() -> CGSize {
+        if isiOSAppOnMac {
+            if let window = UIApplication.shared.connectedScenes
+                .flatMap({ ($0 as? UIWindowScene)?.windows ?? [] })
+                .first(where: { $0.isKeyWindow }) {
+                return window.frame.size
+            } else {
+                return CGSize.zero
+            }
+        } else {
+            return UIScreen.main.bounds.size
+        }
     }
 }
