@@ -479,7 +479,7 @@ extension UIView {
 }
 
 extension ProcessInfo {
-    func getScreenSize() -> CGSize {
+    open func getScreenSize() -> CGSize {
         if isiOSAppOnMac {
             if let window = UIApplication.shared.connectedScenes
                 .flatMap({ ($0 as? UIWindowScene)?.windows ?? [] })
