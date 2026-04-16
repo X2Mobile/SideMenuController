@@ -21,6 +21,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+import UIKit
+
 // MARK: - Extension for implementing the specific functionality for when side panel is positioned under the center
 extension SideMenuController {
     
