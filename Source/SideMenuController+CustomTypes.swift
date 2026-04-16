@@ -6,6 +6,8 @@
 //  Copyright © 2016 teodorpatras. All rights reserved.
 //
 
+import UIKit
+
 // MARK: - Extension for implementing the custom nested types
 public extension SideMenuController {
     enum SidePanelPosition {
