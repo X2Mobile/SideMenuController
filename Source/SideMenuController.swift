@@ -23,7 +23,7 @@
 
 import UIKit
 
-public protocol SideMenuControllerDelegate: class {
+public protocol SideMenuControllerDelegate: AnyObject {
     func sideMenuControllerDidHide(_ sideMenuController: SideMenuController)
     func sideMenuControllerDidReveal(_ sideMenuController: SideMenuController)
 }
@@ -479,8 +479,8 @@ extension UIView {
 }
 
 extension ProcessInfo {
-    open func getScreenSize() -> CGSize {
-        if isiOSAppOnMac {
+    public func getScreenSize() -> CGSize {
+        if #available(iOS 14.0, *), isiOSAppOnMac {
             if let window = UIApplication.shared.connectedScenes
                 .flatMap({ ($0 as? UIWindowScene)?.windows ?? [] })
                 .first(where: { $0.isKeyWindow }) {
@@ -488,8 +488,7 @@ extension ProcessInfo {
             } else {
                 return CGSize.zero
             }
-        } else {
-            return UIScreen.main.bounds.size
         }
+        return UIScreen.main.bounds.size
     }
 }
